@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="card">
+        <div class="row">
+            <aside class="col-sm-5 border-right">
+                <article class="gallery-wrap">
+                    <div class="image">
+                        <div><img class="figure-img img-fluid rounded" [src]="mostraImagemDetalhe(imovel.imagemURL)">
+                        </div>
+                    </div> <!-- slider-product.// -->
+                </article> <!-- gallery-wrap .end// -->
+            </aside>
+            <aside class="col-sm-7">
+                <article class="card-body p-5">
+                    <h3 class="title mb-3">{{imovel.nome}}</h3>
+
+                    <p class="price-detail-wrap">
+                        <span class="price h3 text-warning">
+                            <span class="currency">Verifique abaixo os preços</span>
+                        </span>
+
+                    </p> <!-- price-detail-wrap .// -->
+                    <dl class="item-property">
+                        <dt>Descrição</dt>
+                        <dd>
+                            <p>{{imovel.descricaoImovel}} </p>
+                        </dd>
+                    </dl>
+                    <dl class="param param-feature">
+                        <dt>Tipo do imóvel</dt>
+                        <dd>{{imovel.tipoImovel}}</dd>
+                    </dl> <!-- item-property-hor .// -->
+                    <dl class="param param-feature">
+                        <dt>Endereço</dt>
+                        <dd>{{imovel.endereco}}</dd>
+                    </dl> <!-- item-property-hor .// -->
+                    <dl class="param param-feature">
+                        <dt>Quantidade de quartos</dt>
+                        <dd>{{imovel.qtdQuartos}}</dd>
+                    </dl> <!-- item-property-hor .// -->
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div> <!-- col.// -->
+                        <div class="col-sm-7">
+
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <!-- Botões do grupo-->
+                    <div class="btn-group btn-group-lg mr-2" role="group">
+                        <a href="https://api.whatsapp.com/send?phone=+556999235553&text=Oi,%20eu%20estou%20interessado%20este%20imóvel:%20*{{imovel.nome}}*.%20Quero%20saber%20mais%20detalhes"
+                            class="btn btn-lg btn-primary text-uppercase" target="_blank"><i
+                                class="fab fa-whatsapp"></i>
+                            Entre Contato</a>&nbsp;
+                        <a class="btn btn-lg btn-primary text-uppercase" target="_blank"
+                            href="https://maps.google.com/?key=&q={{imovel.endereco}}&z=3"><i
+                                class="fas fa-map-marked-alt"></i>Ver a localização</a>
+                    </div>
+                    <!--Fim dos botões do grupo-->
+                </article> <!-- card-body.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- card.// -->
+    
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th class="d-md-table-cell">Descrição e Venda/Aluguel</th>
+                <th class="d-md-table-cell">Valor</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let preco of precosDetalhe">
+            <td class="d-md-table-cell">{{preco.descricao}}</td>
+            <td class="d-md-table-cell">{{preco.valor}}</td>
+        </tbody>
+    </table>
+
+</div>
+<!--container.//-->

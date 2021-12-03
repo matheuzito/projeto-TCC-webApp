@@ -1,0 +1,53 @@
+<div class="d-flex align-items-center vh-100">
+
+	<div class="mx-auto text-center shadow-sm bg-white rounded p-5 my-5">
+	
+		
+		<form class="form-signin" [formGroup]="frmLogin">
+			<!-- <i class="fa fa-home mb-2"></i> -->
+			<img src="../../../assets/img/Logomarca.png" style="width: 80%;">
+			<h1 class="h3 mb-3 font-weight-normal">Acesso restrito</h1>
+
+			<div>
+			<label for="username" class="sr-only">Usuário</label>
+			<input 
+			type="text"
+			formControlName="userName"
+			id="userName" 
+			class="form-control" 
+			placeholder="Usuário" 
+			name="userName"
+			required [ngClass]="cssValidator(f.userName)" [(ngModel)]="model.userName"/>
+			<div *ngIf="f.userName.errors?.required" class="invalid-feedback">
+				O Usuário é obrigatório.
+			</div>
+		</div>
+			<div>
+			<label for="password" class="sr-only">Password</label>
+			<input 
+			type="password" 
+			formControlName="password"
+			id="password" 
+			class="form-control" 
+			placeholder="Senha" 
+			name="password" 
+			required [ngClass]="cssValidator(f.password)" [(ngModel)]="model.password"/>
+			<div *ngIf="f.password.errors?.required" class="invalid-feedback">
+				A senha é obrigatório
+			</div>
+			<div *ngIf="f.password.errors?.minlength" class="invalid-feedback">
+				O password deve ter no mínimo 4 caracteres.
+			  </div>
+			</div>
+
+			<button 
+			class="btn btn-lg btn-primary btn-block"
+			[disabled]="!frmLogin.valid"
+			type="submit" (click)="realizarLogin()">Entrar</button>
+			<!-- <p class="mt-4 mb-2 text-muted">Não tem login? Cadastre-se abaixo</p>
+			<a class="btn btn-lg btn-link btn-block" routerLink="/user/registration">Quero me cadastrar</a> -->
+		</form>
+
+	</div>
+	
+</div>

@@ -1,0 +1,80 @@
+<div class="card rounded shadow-sm p-3">
+
+    <div class="d-flex">
+        <div class="flex-fill pr-3">
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Filtro: </div>
+                </div>
+                <input type="text" 
+                class="form-control" 
+                placeholder="Busca por Nome e Endereço" [(ngModel)]="filtroLista">
+            </div>
+        </div>
+        <div>
+            <a class="d-flex btn btn-outline-primary" routerLink="/imoveis/detalhe">
+                <i class="fa fa-plus-circle my-1"></i>
+                <b class="ml-1 d-none d-sm-block">Novo</b>
+                </a>
+        </div>
+    </div>
+    <!-- <h3>Filtro: {{filtroLista}} </h3> -->
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th class="d-none d-md-table-cell">
+                    <button type="button" class="btn btn-outline-light btn-sm" (click)="alterarImagem()">
+                        <i class="{{!mostrarImagem? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+                    </button>
+                </th>
+                <th>#</th>
+                <th>Nome</th>
+                <th class="d-none d-md-table-cell">Endereço</th>
+                <th>Data Cadastrado</th>
+                <th class="d-none d-md-table-cell">Qtd. Quartos</th>
+                <th class="d-none d-md-table-cell">Área</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="imoveis && imoveis.length">
+            <tr *ngFor="let imovel of imoveisFiltrados" (click)="detalheImovel(imovel.id)" style="cursor: pointer;">
+                <td class="d-none d-md-table-cell">
+                    <img [collapse]="!mostrarImagem" [isAnimated]="true" [src]="mostraImagem(imovel.imagemURL)"
+                        [style.width.px]="larguraImagem" [style.margin.px]="margemImagem" alt=""></td>
+                <td>{{imovel.id}}</td>
+                <td>{{imovel.nome}}</td>
+                <td class="d-none d-md-table-cell">{{imovel.endereco}}</td>
+                <td>{{imovel.dataImovelCadastrado }}</td>
+                <td class="d-none d-md-table-cell">{{imovel.qtdQuartos}}</td>
+                <td class="d-none d-md-table-cell">{{imovel.area}}</td>
+                <td>
+                    <!-- <button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar">
+                        <i class="fa fa-edit"></i>
+                    </button> -->
+                    <button type="button" class="btn btn-danger btn-lg mr-2" tooltip="Excluir"
+                        (click)="openModal($event, template, imovel.id)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot *ngIf="!imoveis.length">
+            <tr>
+                <td colspan="8" class="text-center">
+                    <h4>Nenhum Imóvel encontrado</h4>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+<!-- 
+{{imoveis | json}} -->
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Tem certeza que quer deletar este imóvel de código {{this.imovelId}}?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+    </div>
+</ng-template>

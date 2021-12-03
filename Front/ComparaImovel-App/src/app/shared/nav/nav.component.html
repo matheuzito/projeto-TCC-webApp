@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="dashboard">
+        <!-- <i class="fa fa-home mb-2"></i>   -->
+      <img src="../../../assets/img/Logomarca.png" style="width: 70px;"> 
+    </a>
+    <button *ngIf="loggedIn()" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div 
+    *ngIf="loggedIn(); else withoutLoggedIn"
+    class="collapse navbar-collapse"
+    [collapse]="isCollapsed" 
+    [isAnimated]="true" 
+    id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+         <a class="nav-link" routerLink="dashboard">Página inicial</a>
+       </li> 
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" aria-current="page" routerLink="imoveis/lista">Imóveis</a>
+        </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="sobre">Sobre</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle class="nav-link dropdown-toggle" style="cursor: pointer;" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ authService.decodeToken?.unique_name }}
+          </a>
+          <div *dropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <!-- <a class="dropdown-item" routerLink="user/perfil">
+              Perfil
+            </a> -->
+            <div role="separator" class="divider"></div>
+            <a class="dropdown-item" routerLink="user/login" style="cursor: pointer;" (click)="logout()">
+              Sair
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <ng-template 
+    #withoutLoggedIn
+    id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+         <a class="nav-link" routerLink="dashboard">Página inicial</a>
+       </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="sobre">Sobre</a>
+        </li>
+      </ul>
+
+    </ng-template>
+
+    <!-- <button *ngIf="!loggedIn()" class="btn btn-success" (click)="entrar()">
+      Entrar
+    </button> -->
+  </div>
+</nav>
