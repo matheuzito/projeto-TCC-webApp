@@ -20,4 +20,29 @@ Abre a pasta Front-end no seu editor de Texto preferido, para instalar dependên
 
 ``ng serve``
 
-OBS: Precisa do node.js instalado na sua máquina!!!
+OBS: Precisa do node.js instalado no seu computador!!!
+
+
+# In English
+
+Conclusion Project College with ASP.NET Core 5 + Angular 11 to Front-End
+
+Web Application with theme: Web Application for comparing real estate prices
+
+
+# What is in?
+
+- Folder Back: ASP.NET Core 5 API with MVC and the procedures done to work on App (Note: it is all done in API)
+- Folder Front: Angular ver. 11 with Front-End and all dependencies to the project to run this application
+
+# Instructions to Back-End
+
+After clone the project, open the Visual Sutdio 2019 (or recently version) to open the project Back-End, after this, don't forget to change the connection with Database in your preference and before, download the Entity Framework package with the database of your choice via NuGet Packages and then run the database migrations.
+
+# Instructions to Front-End
+
+Open the Front-end folder in your favorite text editor, to install dependencies inside the project, just run the ``npm install`` terminal and it installs what was necessary there later, just run the command:
+
+``ng serve``
+
+Note: You need node.js installed in your computer!!!
