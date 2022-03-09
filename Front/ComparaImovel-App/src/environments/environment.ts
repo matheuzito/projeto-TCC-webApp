@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
+  //DESCOMENTE AQUI, CASO VOCÊ USA PARA TESTES
  // apiURL: 'http://localhost:63678/',
-  apiURL: 'https://apiantoniosilva.azurewebsites.net/',
+  apiURL: 'COLOQUE O SITE EM PRODUÇÃO AQUI',
 };
 
 /*
