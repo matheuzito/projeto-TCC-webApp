@@ -8,8 +8,9 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class PrecoService {
 
+  // DESCOMENTE PARA O USO EM TESTES
   // baseURL = 'http://localhost:63678/api/precos';
-   baseURL = 'https://apiantoniosilva.azurewebsites.net/api/precos';
+   baseURL = 'COLOQUE O SEU SITE EM PRODUÇÃO AQUI!';
 
   // tokenHeader: HttpHeaders;
 
