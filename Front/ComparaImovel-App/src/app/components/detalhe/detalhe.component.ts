@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,11 +20,11 @@ export class DetalheComponent implements OnInit {
   imovelId: number;
   public precosDetalhe: Preco[] = [];
   imovel = {} as Imovel;
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   imagemURL = 'assets/img/upload.png';
 
-  get precos(): FormArray{
-    return this.form.get('precos') as FormArray;
+  get precos(): UntypedFormArray{
+    return this.form.get('precos') as UntypedFormArray;
   }
 
   get f(): any{
@@ -36,7 +36,7 @@ export class DetalheComponent implements OnInit {
               private imovelService: ImovelService,
               private toastr: ToastrService,
               private precoService: PrecoService,
-              private fb: FormBuilder
+              private fb: UntypedFormBuilder
               ) { }
 
   ngOnInit(): void {
@@ -107,7 +107,7 @@ export class DetalheComponent implements OnInit {
     : 'assets/img/semImagem.jpeg';
   }
 
-   criarPrecoDetalhe(preco: Preco): FormGroup{
+   criarPrecoDetalhe(preco: Preco): UntypedFormGroup{
      return this.fb.group({
        id: [preco.id],
        descricao: [preco.descricao, Validators.required],

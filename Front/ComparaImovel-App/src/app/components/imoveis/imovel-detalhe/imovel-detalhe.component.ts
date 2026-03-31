@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -20,7 +20,7 @@ export class ImovelDetalheComponent implements OnInit {
 
   modalRef: BsModalRef;
   imovel = {} as Imovel;
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   estadoSalvar = 'post';
   precoAtual = {id: 0, descricao: '', indice: 0};
   imagemURL = 'assets/img/upload.png';
@@ -32,15 +32,15 @@ export class ImovelDetalheComponent implements OnInit {
   }
 
 
-  get precos(): FormArray{
-    return this.form.get('precos') as FormArray;
+  get precos(): UntypedFormArray{
+    return this.form.get('precos') as UntypedFormArray;
   }
 
   get f(): any{
     return this.form.controls;
   }
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private localeService: BsLocaleService,
               private activatedRouter: ActivatedRoute,
               private imovelService: ImovelService,
@@ -135,7 +135,7 @@ export class ImovelDetalheComponent implements OnInit {
     this.precos.push(this.criarPreco({id: 0} as Preco));
   }
 
-  criarPreco(preco: Preco): FormGroup{
+  criarPreco(preco: Preco): UntypedFormGroup{
     return this.fb.group({
       id: [preco.id],
       descricao: [preco.descricao, Validators.required],
