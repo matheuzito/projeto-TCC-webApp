@@ -78,18 +78,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ComparaImovel-App:build"
+            "buildTarget": "ComparaImovel-App:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ComparaImovel-App:build:production"
+              "buildTarget": "ComparaImovel-App:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ComparaImovel-App:build"
+            "buildTarget": "ComparaImovel-App:build"
           }
         },
         "test": {
