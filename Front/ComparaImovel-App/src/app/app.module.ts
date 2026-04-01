@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -43,60 +43,54 @@ import { SobreComponent } from './components/sobre/sobre.component';
 
 defineLocale('pt-br', ptBrLocale);
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ImoveisComponent,
-      ClientesComponent,
-      ContatosComponent,
-      PerfilComponent,
-      DashboardComponent,
-      NavComponent,
-      TituloComponent,
-      DateTimeFormatPipe,
-      ImovelDetalheComponent,
-      ImovelListaComponent,
-      UserComponent,
-      LoginComponent,
-      RegistrationComponent,
-      DetalheComponent,
-      SobreComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CollapseModule.forRoot(),
-    TooltipModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-      progressBar: true
-    }),
-    NgxSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxCurrencyDirective
-  ],
-  providers: [
-    ImovelService, {
-      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
-    },
-    PrecoService,
-    AuthService,
-      provideEnvironmentNgxCurrency({
-    prefix: 'R$ ',
-    thousands: '.',
-    decimal: ',',
-    align: 'left'
-  })
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ImoveisComponent,
+        ClientesComponent,
+        ContatosComponent,
+        PerfilComponent,
+        DashboardComponent,
+        NavComponent,
+        TituloComponent,
+        DateTimeFormatPipe,
+        ImovelDetalheComponent,
+        ImovelListaComponent,
+        UserComponent,
+        LoginComponent,
+        RegistrationComponent,
+        DetalheComponent,
+        SobreComponent
+    ],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CollapseModule.forRoot(),
+        TooltipModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        ModalModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        ToastrModule.forRoot({
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: true,
+            progressBar: true
+        }),
+        NgxSpinnerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxCurrencyDirective], providers: [
+        ImovelService, {
+            provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+        },
+        PrecoService,
+        AuthService,
+        provideEnvironmentNgxCurrency({
+            prefix: 'R$ ',
+            thousands: '.',
+            decimal: ',',
+            align: 'left'
+        }),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
