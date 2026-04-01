@@ -24,12 +24,12 @@
     "bootstrap": "^4.6.0",
     "bootswatch": "^5.1.0",
     "ngx-bootstrap": "^10.0.0",
-    "ngx-currency": "^2.5.2",
+    "ngx-currency": "^4.0.0",
     "ngx-spinner": "^15.0.1",
     "ngx-toastr": "^14.1.0",
-    "rxjs": "~6.6.0",
+    "rxjs": "^7.8.0",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.13.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.9",
