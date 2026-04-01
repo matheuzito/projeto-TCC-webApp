@@ -12,7 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
-import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxCurrencyDirective,  provideEnvironmentNgxCurrency } from 'ngx-currency';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -81,14 +81,20 @@ defineLocale('pt-br', ptBrLocale);
     NgxSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxCurrencyModule
+    NgxCurrencyDirective
   ],
   providers: [
     ImovelService, {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
     },
     PrecoService,
-    AuthService
+    AuthService,
+      provideEnvironmentNgxCurrency({
+    prefix: 'R$ ',
+    thousands: '.',
+    decimal: ',',
+    align: 'left'
+  })
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
