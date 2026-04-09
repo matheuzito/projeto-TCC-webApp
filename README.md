@@ -32,6 +32,8 @@ Conclusion Project College with ASP.NET Core 5 + Angular 11 to Front-End
 
 Web Application with theme: Web Application for comparing real estate prices
 
+# Updated – 2026: IMPORTANT
+The project has been upgraded to Angular version 18 and its NPM package dependencies, with everything working 100% in accordance with the new features.
 
 # What is in?
 
