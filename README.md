@@ -3,6 +3,9 @@ Projeto do Trabalho de Conclusão do Curso com ASP.NET Core 5 + Angular 11 para 
 
 Projeto da aplicação Web com tema: Aplicação Web para comparação dos preços de imóveis
 
+#Atualizado - 2026: IMPORTANTE
+O projeto foi atualizado para a versão 18 do Angular e de suas dependências dos Pacotes do NPM e tudo funcionando 100% de acordo com as novas funcionalidades.
+
 
 # O que vem nele?
 
